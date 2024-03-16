@@ -1,5 +1,6 @@
 import { Home, Pizza, UtensilsCrossed } from 'lucide-react'
 
+import { ThemeToggle } from '../theme/theme-toggle'
 import { NavLink } from './nav-link'
 import { Separator } from './separator'
 
@@ -20,6 +21,10 @@ export function Header() {
             <UtensilsCrossed className="h-4 w-4" /> Pedidos
           </NavLink>
         </nav>
+
+        <div className=" ml-auto flex items-center gap-2">
+          <ThemeToggle />
+        </div>
       </div>
       <Separator orientation="horizontal" />
     </div>
