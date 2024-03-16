@@ -1,7 +1,7 @@
 import { Label } from '@radix-ui/react-label'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -18,16 +18,17 @@ const signUpFormSchema = z.object({
 type SignUpForm = z.infer<typeof signUpFormSchema>
 
 export function SignUp() {
+  const navigate = useNavigate()
   const { register, handleSubmit, formState } = useForm<SignUpForm>()
   const { isSubmitting } = formState
 
   async function handleSignUp(data: SignUpForm) {
     console.log(data)
     await new Promise((resolve) => setTimeout(resolve, 2000))
-    toast.success('enviamos um link de authenticação para o seu e-mail.', {
+    toast.success('Restaurante cadastrado com sucesso!', {
       action: {
         label: 'Reenviar',
-        onClick: () => handleSignUp(data),
+        onClick: () => navigate('/sign-in'),
       },
     })
   }
